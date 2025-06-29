@@ -3,9 +3,11 @@ local map = vim.keymap.set
 
 map({ "n", "v", "i" }, "<C-a>", "<ESC>ggVG", opts, { desc = "Select All" })
 map("v", "<C-c>", '"+y', opts, { desc = "Copy to System Clipboard" })
-map({ "n", "i" }, "<C-v>", "<ESC>\"+pa", opts, { desc = "Paste from System Clipboard" })
 map({ "n", "v" }, "<C-x>", '"+d', opts, { desc = "Cut to System Clipboard" })
 map({ "n", "v", "i" }, "<C-z>", "<cmd>undo<CR>", opts, { desc = "Undo" })
+
+-- macOS-style clipboard (Cmd+v for paste)
+map({ "n", "i" }, "<D-v>", "<ESC>\"+pa", opts, { desc = "Paste from System Clipboard (Cmd+V)" })
 
 -- Additional clipboard keybindings
 map("v", "<Leader>y", '"+y', opts, { desc = "Yank to System Clipboard" })
@@ -144,8 +146,7 @@ map({ "n", "v" }, "<Leader>Ly", "<cmd>Leet yank<CR>", opts, { desc = "Yank Solut
 map({ "n", "v" }, "<Leader>Lo", "<cmd>Leet open<CR>", opts, { desc = "Open in Browser" })
 map({ "n", "v" }, "<Leader>LD", "<cmd>Leet desc<CR>", opts, { desc = "Toggle Description" })
 
--- GTFO:
-map({ "n", "v" }, "<Leader><Leader>u", "<cmd>GTFOUpdate<CR>", opts, { desc = "Update GTFO" })
-map({ "n", "v" }, "<Leader><Leader>m", "<cmd>GTFOCheckMason<CR>", opts, { desc = "Check Mason" })
-map({ "n", "v" }, "<Leader><Leader>t", "<cmd>GTFOToggleTrans<CR>", opts, { desc = "Toggle Transparency" })
-map({ "n", "v" }, "<Leader><Leader>c", "<cmd>GTFOThemes<CR>", opts, { desc = "GTFO Themes" })
+map({ "n", "v" }, "<Leader><Leader>u", "<cmd>Update<CR>", opts, { desc = "Update Neovim" })
+map({ "n", "v" }, "<Leader><Leader>m", "<cmd>CheckMason<CR>", opts, { desc = "Check Mason" })
+map({ "n", "v" }, "<Leader><Leader>t", "<cmd>ToggleTrans<CR>", opts, { desc = "Toggle Transparency" })
+map({ "n", "v" }, "<Leader><Leader>c", "<cmd>Themes<CR>", opts, { desc = "Toggle Themes" })
