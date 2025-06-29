@@ -1,8 +1,6 @@
-<h1 align="center">my nvim setup</h1>
-
-> **_NOTE:_** 
-> forked from [this repo](https://github.com/sownteedev/TeVim)
-
+<h1 align="center">my nvim setup (based on 
+    <a href="https://github.com/sownteedev/TeVim/tree/v2.0">TeVim</a>
+)</h1>
 <div align="center">
 
 ![GitHub top language](https://img.shields.io/github/languages/top/sownteedev/TeVim?color=6d92bf&style=for-the-badge&labelColor=111418)
