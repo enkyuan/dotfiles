@@ -34,16 +34,16 @@ end
 local ui = {
 	"StatusLine",
 	"StatusLineNC",
-	"TeSTTNothing",
-	"TeSTTNothing2",
-	"TeBufOnInactive",
-	"TeBufOnActive",
-	"TeBufOnClose",
-	"TeBufOffClose",
-	"TeBufEmptyColor",
-	"TeBufOffModified",
-	"TeBufEmpty",
-	"TeBufTree",
+	"STTNothing",
+	"STTNothing2",
+	"BufOnInactive",
+	"BufOnActive",
+	"BufOnClose",
+	"BufOffClose",
+	"BufEmptyColor",
+	"BufOffModified",
+	"BufEmpty",
+	"BufTree",
 }
 
 for _, ui_hl in ipairs(ui) do
@@ -51,6 +51,51 @@ for _, ui_hl in ipairs(ui) do
 		bg = "NONE",
 	}
 end
+
+-- Statusline transparency overrides
+-- These need to match the exact names from ui.lua
+M.STTNormalMode = { bg = "NONE" }
+M.STTVisualMode = { bg = "NONE" }
+M.STTCommandMode = { bg = "NONE" }
+M.STTInsertMode = { bg = "NONE" }
+M.STTTerminalMode = { bg = "NONE" }
+M.STTNTerminalMode = { bg = "NONE" }
+M.STTConfirmMode = { bg = "NONE" }
+M.STTNormalModeIcon = { bg = "NONE" }
+M.STTVisualModeIcon = { bg = "NONE" }
+M.STTCommandModeIcon = { bg = "NONE" }
+M.STTInsertModeIcon = { bg = "NONE" }
+M.STTTerminalModeIcon = { bg = "NONE" }
+M.STTNTerminalModeIcon = { bg = "NONE" }
+M.STTConfirmModeIcon = { bg = "NONE" }
+M.STTFileIcon = { bg = "NONE" }
+M.STTFileName = { bg = "NONE" }
+M.STTFolder = { bg = "NONE" }
+M.STTLsp = { bg = "NONE" }
+M.STTLspIcon = { bg = "NONE" }
+M.STTCopilot = { bg = "NONE" }
+M.STTCodeium = { bg = "NONE" }
+M.STTTabnine = { bg = "NONE" }
+M.STTError = { bg = "NONE" }
+M.STTErrorIcon = { bg = "NONE" }
+M.STTWarning = { bg = "NONE" }
+M.STTWarningIcon = { bg = "NONE" }
+M.STTHints = { bg = "NONE" }
+M.STTHintsIcon = { bg = "NONE" }
+M.STTInfo = { bg = "NONE" }
+M.STTInfoIcon = { bg = "NONE" }
+M.STTBranchName = { bg = "NONE" }
+M.STTBranchIcon = { bg = "NONE" }
+M.STTDiffAdd = { bg = "NONE" }
+M.STTDiffChange = { bg = "NONE" }
+M.STTDiffRemove = { bg = "NONE" }
+M.STTGithub = { bg = "NONE" }
+M.STTTabIcon = { bg = "NONE" }
+M.STTTab = { bg = "NONE" }
+M.STTProgressIcon = { bg = "NONE" }
+M.STTProgress = { bg = "NONE" }
+M.STTLocationIcon = { bg = "NONE" }
+M.STTLocation = { bg = "NONE" }
 
 --- Telescope ---
 local telescope = {

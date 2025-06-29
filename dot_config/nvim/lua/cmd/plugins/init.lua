@@ -247,7 +247,7 @@ local plugins = {
 			{
 				"nvimdev/lspsaga.nvim",
 				opts = { 
-					symbol_in_winbar = { show_file = false },
+					symbol_in_winbar = { enable = false }, -- Disable symbol_in_winbar to fix deprecation warnings
 					lightbulb = { enable = false }, -- Disable lightbulb to reduce deprecation warnings
 				},
 			},
