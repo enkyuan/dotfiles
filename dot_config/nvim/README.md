@@ -1,4 +1,6 @@
-<h1 align="center">TeVim</h1>
+<h1 align="center">my nvim setup</h1>
+
+<h2 align="center">forked from [this repo](https://github.com/sownteedev/TeVim)</h2>
 
 <div align="center">
 
