@@ -4,7 +4,7 @@ vim.cmd("function! TeBufGoToBuf(bufnr,b,c,d) \n execute 'b'..a:bufnr \n endfunct
 vim.cmd("function! ToggleTheme(a,b,c,d) \n Themes \n endfunction")
 vim.cmd("function! ToggleTrans(a,b,c,d) \n ToggleTrans \n endfunction")
 vim.cmd("function! Split(a,b,c,d) \n vsplit \n endfunction")
-vim.cmd("function! Run(a,b,c,d) \n lua require('cmd.core.utils').build_run() \n endfunction")
+
 vim.cmd("function! Quit(a,b,c,d) \n qa! \n endfunction")
 vim.cmd([[ function! TeBufKillBuf(bufnr,b,c,d)
         call luaeval('require("cmd.ui.bufline").close_buffer(_A)', a:bufnr)
@@ -14,7 +14,14 @@ vim.cmd([[ function! TeBufKillBuf(bufnr,b,c,d)
 local function new_hl(group1, group2)
 	local fg = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(group1)), "fg#")
 	local bg = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(group2)), "bg#")
-	vim.api.nvim_set_hl(0, "TeBuf" .. group1 .. group2, { fg = fg, bg = bg })
+	
+	-- Always respect transparent backgrounds (NONE or empty)
+	local hl_attrs = { fg = fg }
+	if bg and bg ~= "" and bg ~= "NONE" then
+		hl_attrs.bg = bg
+	end
+	
+	vim.api.nvim_set_hl(0, "TeBuf" .. group1 .. group2, hl_attrs)
 	return "%#" .. "TeBuf" .. group1 .. group2 .. "#"
 end
 
@@ -76,15 +83,17 @@ local createTab = function(buf)
 			end
 		end
 		if buf == vim.api.nvim_get_current_buf() then
+			-- Active buffer: highlight with background
 			filename = "%#TeBufOnActive#" .. "   " .. icon .. "  " .. "%#TeBufOnActive#" .. filename
 			close_btn = (vim.bo[0].modified and "%" .. buf .. "@BufflineKillBuf@%#TeBufOnModified#●   ")
 				or ("%#TeBufOnClose#" .. close_btn) .. "   "
 		else
-			filename = "%#TeBufOnInactive#" .. "   " .. icon .. "  " .. "%#TeBufOnInactive#" .. filename
-			close_btn = (vim.bo[buf].modified and "%" .. buf .. "@BufflineKillBuf@%#TeBufOffModified#●   ")
-				or ("%#TeBufOffClose#" .. close_btn) .. "   "
+			-- Inactive buffer: no background, just normal foreground color
+			filename = "   " .. icon .. "  " .. filename
+			close_btn = (vim.bo[buf].modified and "%" .. buf .. "@BufflineKillBuf@●   ")
+				or ("" .. close_btn) .. "   "
 		end
-		return "%" .. buf .. "@TeBufGoToBuf@" .. filename .. "  " .. close_btn .. "%X" .. "%#TeBufEmptyColor#"
+		return "%" .. buf .. "@TeBufGoToBuf@" .. filename .. "  " .. close_btn .. "%X"
 	end
 end
 
@@ -100,30 +109,11 @@ local treeWidth = function()
 end
 
 M.getTabline = function()
-	local treespace = "%#TeBufTree#" .. string.rep(" ", treeWidth())
+	-- Make treespace completely transparent - no highlight group
+	local treespace = string.rep(" ", treeWidth())
 	local buffline = ""
-	local buffstart = "%#TeBufEmpty#"
-	local run = "%@Run@" .. ""
-	local listrun = {
-		c = "c",
-		cpp = "cpp",
-		lua = "lua",
-		python = "python",
-		rust = "rust",
-		javascript = "javascript",
-		typescript = "typescript",
-		go = "go",
-		php = "php",
-		java = "java",
-		cs = "cs",
-		dart = "dart",
-		sh = "sh",
-	}
-	if vim.bo.filetype == "html" or vim.bo.filetype == "markdown" then
-		run = "%@Run@" .. " 󰀂 "
-	elseif listrun[vim.bo.filetype] then
-		run = "%@Run@" .. "  "
-	end
+	local buffstart = "" -- Remove empty highlight group 
+
 
 	local split = "%@Split@" .. "  "
 	local trans = "%@ToggleTrans@" .. " 󱡓 "
@@ -142,7 +132,7 @@ M.getTabline = function()
 			if conditions then
 				goto do_nothing
 			else
-				filename = "%#TeBufEmptyColor#" .. createTab(buf)
+				filename = createTab(buf) -- Remove EmptyColor highlight group
 			end
 			buffline = buffline .. filename
 			counter = counter + 1
@@ -153,8 +143,6 @@ M.getTabline = function()
 		return treespace
 			.. buffstart
 			.. "%="
-			.. "%#TeBufRun#"
-			.. run
 			.. "%#TeBufSplit#"
 			.. split
 			.. "%#TeBufTrans#"
@@ -167,8 +155,6 @@ M.getTabline = function()
 	return treespace
 		.. buffline
 		.. "%="
-		.. "%#TeBufRun#"
-		.. run
 		.. "%#TeBufSplit#"
 		.. split
 		.. "%#TeBufTrans#"

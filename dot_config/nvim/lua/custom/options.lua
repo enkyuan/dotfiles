@@ -1,3 +1,4 @@
 -- add options or override my options in here
 vim.g.TeVimTheme = "yoru"
-vim.g.transparency = true
+-- TeVim transparency disabled - using transparent.lua plugin instead
+vim.g.transparency = false

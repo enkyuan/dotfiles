@@ -39,60 +39,7 @@ function M.toggle_option(option)
 	vim.notify(option .. " set to " .. tostring(value))
 end
 
-function M.build_run()
-	local filetype = vim.bo.filetype
-	if filetype == "c" then
-		vim.cmd(
-			"TermExec cmd='gcc "
-			.. vim.fn.expand("%")
-			.. " -o "
-			.. vim.fn.expand("%:r")
-			.. " && "
-			.. vim.fn.expand("%:r")
-			.. "'"
-		)
-	elseif filetype == "cpp" then
-		vim.cmd(
-			"TermExec cmd='g++ "
-			.. vim.fn.expand("%")
-			.. " -o "
-			.. vim.fn.expand("%:r")
-			.. " && "
-			.. vim.fn.expand("%:r")
-			.. "'"
-		)
-	elseif filetype == "python" then
-		vim.cmd("TermExec cmd='python3 " .. vim.fn.expand("%") .. "'")
-	elseif filetype == "javascript" then
-		vim.cmd("TermExec cmd='node " .. vim.fn.expand("%") .. "'")
-	elseif filetype == "typescript" then
-		vim.cmd("TermExec cmd='ts-node " .. vim.fn.expand("%") .. "'")
-	elseif filetype == "php" then
-		vim.cmd("TermExec cmd='php " .. vim.fn.expand("%") .. "'")
-	elseif filetype == "java" then
-		vim.cmd("TermExec cmd='javac " .. vim.fn.expand("%") .. " && java " .. vim.fn.expand("%:r") .. "'")
-	elseif filetype == "cs" then
-		vim.cmd("TermExec cmd='mcs " .. vim.fn.expand("%") .. "'")
-	elseif filetype == "rust" then
-		vim.cmd("TermExec cmd='cargo run'")
-	elseif filetype == "go" then
-		vim.cmd("TermExec cmd='go run " .. vim.fn.expand("%") .. "'")
-	elseif filetype == "lua" then
-		vim.cmd("TermExec cmd='lua " .. vim.fn.expand("%") .. "'")
-	elseif filetype == "sh" then
-		vim.cmd("TermExec cmd='bash " .. vim.fn.expand("%") .. "'")
-	elseif filetype == "dart" then
-		vim.cmd("TermExec cmd='dart " .. vim.fn.expand("%") .. "'")
-	elseif not M.is_available("markdown-preview.nvim") and filetype == "markdown" then
-		vim.notify("You can install plugins support for markdown like markdown-preview.nvim ^^")
-	elseif filetype == "html" and vim.fn.executable("live-server") ~= 1 then
-		vim.notify("You can install live-server by npm ^^")
-	elseif filetype == "html" then
-		vim.cmd("TermExec cmd='live-server " .. vim.fn.expand("%:p:h") .. "'")
-	elseif filetype == "markdown" then
-		vim.cmd("MarkdownPreview")
-	end
-end
+
 
 function M.LazyGit()
 	local status_ok, _ = pcall(require, "toggleterm")

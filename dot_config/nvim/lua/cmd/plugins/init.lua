@@ -282,7 +282,7 @@ local plugins = {
 	},
 	{
 		"xiyaowong/transparent.nvim",
-		event = "VimEnter",
+		lazy = false,
 		keys = {
 			{ "<leader>tt", "<cmd>TransparentToggle<cr>", desc = "Toggle Transparency" },
 		},
@@ -292,6 +292,7 @@ local plugins = {
 		config = function(_, opts)
 			require("transparent").setup(opts)
 			-- Enable transparency by default
+			require("transparent").toggle(true)
 			require("transparent").clear_prefix("BufferLine")
 			require("transparent").clear_prefix("NeoTree")
 			require("transparent").clear_prefix("WhichKey")
@@ -299,6 +300,25 @@ local plugins = {
 			require("transparent").clear_prefix("Lazy")
 			require("transparent").clear_prefix("Mason")
 			require("transparent").clear_prefix("LeetCode")
+			-- Note: TeBuf groups are handled individually in transparent.lua config, not with clear_prefix
+			
+			-- Force TeBufQuit to keep red background after transparency is applied
+			local function set_quit_highlight()
+				local colors = require("cmd.themes").getCurrentTheme()
+				local utils = require("cmd.core.utils")
+				vim.api.nvim_set_hl(0, "TeBufQuit", { 
+					bg = colors.red, 
+					fg = utils.blend(colors.foreground, colors.background, 0.08) 
+				})
+			end
+			
+			vim.schedule(set_quit_highlight)
+			
+			-- Ensure highlight is preserved on colorscheme changes
+			vim.api.nvim_create_autocmd("ColorScheme", {
+				callback = set_quit_highlight,
+				desc = "Preserve TeBufQuit red background"
+			})
 		end,
 	},
 	{

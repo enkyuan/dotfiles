@@ -2,43 +2,24 @@ local colors = require("cmd.themes").getCurrentTheme()
 local utils = require("cmd.core.utils")
 
 return {
-	-- Tebufline
-	TeBufOnActive = { fg = colors.foreground, bg = colors.background, bold = true },
-	TeBufOnInactive = {
-		fg = utils.blend(colors.foreground, colors.background, 0.2),
-		bg = utils.blend(colors.foreground, colors.background, 0.03),
-	},
-	TeBufFolderOnActive = { fg = colors.foreground, bg = colors.background, italic = true },
-	TeBufFolderOnInactive = {
-		fg = utils.blend(colors.foreground, colors.background, 0.2),
-		bg = utils.blend(colors.foreground, colors.background, 0.03),
-		italic = true,
-	},
-	TeBufOnModified = { fg = colors.green },
-	TeBufOffModified = {
-		fg = utils.blend(colors.foreground, colors.background, 0.2),
-		bg = utils.blend(colors.foreground, colors.background, 0.03),
-	},
-	TeBufOnClose = { fg = colors.red, bg = colors.background },
-	TeBufOffClose = {
-		fg = utils.blend(colors.foreground, colors.background, 0.2),
-		bg = utils.blend(colors.foreground, colors.background, 0.03),
-	},
-	TeBufTree = { bg = colors.darker },
-	TeBufEmpty = { bg = colors.background },
-	TeBufEmptyColor = { bg = utils.blend(colors.foreground, colors.background, 0.015) },
-	TeBufCloseButton = { bg = colors.red, fg = colors.background },
+	-- Tebufline - Completely transparent with only active titles highlighted
+	TeBufOnActive = { fg = colors.foreground, bg = "NONE", bold = true },
+	TeBufOnInactive = { fg = colors.foreground, bg = "NONE" }, -- Completely transparent, no gray background
+	TeBufFolderOnActive = { fg = colors.blue, bg = "NONE", italic = true }, -- Highlight folder paths on active
+	TeBufFolderOnInactive = { fg = colors.foreground, bg = "NONE", italic = true }, -- Normal color for inactive
+	TeBufOnModified = { fg = colors.green, bg = "NONE" },
+	TeBufOffModified = { fg = colors.foreground, bg = "NONE" }, -- No special highlighting for inactive modified
+	TeBufOnClose = { fg = colors.red, bg = "NONE" },
+	TeBufOffClose = { fg = colors.foreground, bg = "NONE" }, -- No special highlighting for inactive close
+	TeBufTree = { bg = "NONE" }, -- Make tree space completely transparent
+	TeBufEmpty = { bg = "NONE" }, -- Make empty space transparent
+	TeBufEmptyColor = { bg = "NONE" }, -- Make empty color transparent
+	TeBufCloseButton = { bg = "NONE", fg = colors.red },
 
-	TeBufRun = {
-		bg = utils.blend(colors.foreground, colors.background, 0.08),
-		fg = utils.mix(colors.red, colors.green, 0.5),
-	},
-	TeBufSplit = { bg = utils.blend(colors.foreground, colors.background, 0.08), fg = colors.blue },
-	TeBufTrans = {
-		bg = utils.blend(colors.foreground, colors.background, 0.08),
-		fg = utils.mix(colors.foreground, colors.blue, 0.7),
-	},
-	TeBufTheme = { bg = utils.blend(colors.foreground, colors.background, 0.08), fg = colors.green },
+	-- Action buttons - completely transparent backgrounds
+	TeBufSplit = { bg = "NONE", fg = colors.blue },
+	TeBufTrans = { bg = "NONE", fg = utils.mix(colors.foreground, colors.blue, 0.7) },
+	TeBufTheme = { bg = "NONE", fg = colors.green },
 	TeBufQuit = { bg = colors.red, fg = utils.blend(colors.foreground, colors.background, 0.08) },
 
 	-- TeSttLine

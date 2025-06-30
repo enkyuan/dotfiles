@@ -3,7 +3,7 @@ return {
 		'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
 		'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
 		'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
-		'SignColumn', 'CursorColumn', 'CursorLine', 'TabLine', 'TabLineFill', 'StatusLine', 
+		'SignColumn', 'CursorColumn', 'CursorLine', 'TabLine', 'TabLineFill', 'TabLineSel', 'StatusLine', 
 		'StatusLineNC', 'VertSplit', 'WinSeparator', 'WinBar', 'WinBarNC'
 	},
 	extra_groups = {
@@ -44,7 +44,7 @@ return {
 		"CmpDocumentationBorder",
 		"CmpItemAbbr",
 		"CmpItemMenu",
-		-- BufferLine/StatusLine (Custom TeVim components)
+		-- BufferLine/StatusLine (Essential TeBuf groups that should be transparent)
 		"TeBufOnInactive",
 		"TeBufOnActive", 
 		"TeBufOnClose",
@@ -53,6 +53,13 @@ return {
 		"TeBufOffModified",
 		"TeBufEmpty",
 		"TeBufTree",
+		"TeBufFolderOnActive",
+		"TeBufFolderOnInactive",
+		"TeBufOnModified",
+		"TeBufSplit",
+		"TeBufTrans",
+		"TeBufTheme",
+		-- Note: TeBufQuit is excluded to preserve red background
 		"TeSTTNothing",
 		"TeSTTNothing2",
 		-- Terminal
@@ -128,5 +135,6 @@ return {
 		"CursorLineNr", -- Keep cursor line number visible
 		"Search", -- Keep search highlighting visible
 		"IncSearch", -- Keep incremental search visible
+		"TeBufQuit", -- Keep quit button red background (don't make transparent)
 	},
 } 
