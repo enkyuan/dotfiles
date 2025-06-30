@@ -112,7 +112,7 @@ map({ "n", "v" }, "<Leader>li", "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.
 map({ "n", "v" }, "<Leader>lI", "<cmd>LspInfo<CR>", opts, { desc = "Info" })
 map({ "n", "v" }, "<Leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<CR>", opts, { desc = "Next Diagnostic" })
 map({ "n", "v" }, "<Leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<CR>", opts, { desc = "Prev Diagnostic" })
-map({ "n", "v" }, "<Leader>lo", "<cmd>Lspsaga outline<CR>", opts, { desc = "Outline" })
+map({ "n", "v" }, "<Leader>lo", "<cmd>Telescope lsp_document_symbols<CR>", opts, { desc = "Outline" })
 map({ "n", "v" }, "<Leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts, { desc = "Rename" })
 map({ "n", "v" }, "<Leader>ls", "<cmd>Telescope lsp_document_symbols<CR>", opts, { desc = "Document Symbols" })
 map({ "n", "v" }, "<Leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", opts, { desc = "Workspace Symbols" })

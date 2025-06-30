@@ -155,29 +155,27 @@ local diagnostics = function()
 end
 
 local lsp = function()
-	local buf_clients = vim.lsp.get_clients()
-	if not buf_clients then
+	-- Get clients for the current buffer specifically
+	local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
+	if not buf_clients or #buf_clients == 0 then
 		return ""
 	end
-	local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-	if next(buf_clients) == nil then
-		return ""
-	end
-
-	-- ADD CLIENTS
-	local add_client = function(filetype)
-		local clients = {}
-		for _, client in pairs(buf_clients) do
-			if client.config.filetypes ~= nil then
-				if vim.tbl_contains(client.config.filetypes, filetype) then
-					table.insert(clients, client.name)
-				end
-			end
+	
+	local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
+	
+	-- Get active client names for current buffer
+	local buf_client_names = {}
+	for _, client in pairs(buf_clients) do
+		-- Check if client supports this filetype
+		if client.config.filetypes and vim.tbl_contains(client.config.filetypes, buf_ft) then
+			table.insert(buf_client_names, client.name)
+		elseif not client.config.filetypes then
+			-- If no filetypes specified, assume it supports current filetype
+			table.insert(buf_client_names, client.name)
 		end
-		return clients
 	end
-	local buf_client_names = add_client(buf_ft)
 
+	-- Add formatters if conform is available
 	local conform_ok, conform = pcall(require, "conform")
 	if conform_ok then
 		local formatters = conform.list_formatters(0)
@@ -186,12 +184,18 @@ local lsp = function()
 		end
 	end
 
+	-- Remove duplicates and return formatted string
+	buf_client_names = vim.fn.uniq(buf_client_names)
+	if #buf_client_names == 0 then
+		return ""
+	end
+	
 	-- RETURN CLIENTS
 	if #buf_client_names > 3 then
 		return "%#TeSTTLsp#" ..
 			" " .. buf_client_names[1] .. ", " .. buf_client_names[2] .. ", " .. buf_client_names[3] .. " "
 	end
-	return "%#TeSTTLsp#" .. " " .. table.concat(vim.fn.uniq(buf_client_names), ", ") .. " "
+	return "%#TeSTTLsp#" .. " " .. table.concat(buf_client_names, ", ") .. " "
 end
 
 local copilot = function()

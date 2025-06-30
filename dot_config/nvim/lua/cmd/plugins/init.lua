@@ -102,7 +102,9 @@ local plugins = {
 	},
 	{
 		"nvim-telescope/telescope.nvim",
+		commit = "a0bbec21",
 		cmd = "Telescope",
+		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = function()
 			return require("cmd.plugins.configs.telescope")
 		end,
@@ -244,13 +246,25 @@ local plugins = {
 		event = { "BufReadPost", "BufNewFile" },
 		cmd = { "LspInfo", "LspInstall", "LspUninstall", "LspStart" },
 		dependencies = {
-			{
-				"nvimdev/lspsaga.nvim",
-				opts = { 
-					symbol_in_winbar = { enable = false }, -- Disable symbol_in_winbar to fix deprecation warnings
-					lightbulb = { enable = false }, -- Disable lightbulb to reduce deprecation warnings
-				},
-			},
+			-- {
+			-- 	"nvimdev/lspsaga.nvim",
+			-- 	opts = { 
+			-- 		symbol_in_winbar = { enable = false }, -- Disable symbol_in_winbar to fix deprecation warnings
+			-- 		lightbulb = { enable = false }, -- Disable lightbulb to reduce deprecation warnings
+			-- 		outline = { enable = false }, -- Disable outline to fix client.request deprecation warnings
+			-- 		beacon = { enable = false }, -- Disable beacon feature
+			-- 		symbol = { enable = false }, -- Completely disable symbol feature to fix symbol/head.lua warnings
+			-- 		ui = {
+			-- 			-- Disable code action sign to avoid deprecation warnings
+			-- 			code_action = false,
+			-- 		},
+			-- 		hover = {
+			-- 			-- Disable max_width/height to avoid potential issues
+			-- 			max_width = 0.6,
+			-- 			max_height = 0.8,
+			-- 		},
+			-- 	},
+			-- },
 			{
 				"williamboman/mason.nvim",
 				cmd = { "Mason", "MasonInstall", "MasonUpdate" },
