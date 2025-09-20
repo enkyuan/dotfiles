@@ -1,0 +1,110 @@
+# --[ fonts ] --------------------------------------------------------------
+# Font configuration similar to Kitty setup
+
+font-family = JetBrainsMono Nerd Font Mono Regular
+font-family-bold = JetBrainsMono Nerd Font Mono ExtraBold  
+font-family-italic = JetBrainsMono Nerd Font Mono Italic
+font-family-bold-italic = JetBrainsMono Nerd Font Mono ExtraBold Italic
+
+font-size = 16
+
+# Font adjustments to match Kitty's modify_font settings
+adjust-underline-position = 50%
+adjust-underline-thickness = 1
+adjust-cell-height = 10%
+
+# Symbol font mapping - equivalent to Kitty's symbol_map
+font-codepoint-map = U+F0001-U+F1af0=Hack Nerd Font
+font-codepoint-map = U+F8FF,U+100000-U+1018C7=SF Pro
+
+# Disable ligatures when cursor is over them (similar to Kitty)
+font-shaping-break = cursor
+
+# --[ cursor ] --------------------------------------------------------------
+cursor-style = block
+cursor-opacity = 1.0
+
+# --[ mouse ] ---------------------------------------------------------------
+copy-on-select = true
+scrollback-limit = 20971520
+focus-follows-mouse = true
+mouse-scroll-multiplier = 3
+
+# --[ bells ] ---------------------------------------------------------------
+bell-features = no-system,no-audio,attention,title
+
+# --[ windows ] -------------------------------------------------------------
+window-padding-x = 8
+window-padding-y = 12
+window-padding-balance = true
+
+# --[ tabs ] ----------------------------------------------------------------
+# Tab configuration - Ghostty handles tabs differently than Kitty
+window-new-tab-position = current
+
+# --[ advanced ] ------------------------------------------------------------
+# Environment and shell configuration
+env = PATH=/opt/homebrew/bin/:/usr/local/bin/:${PATH}
+command = /bin/zsh
+shell-integration = detect
+
+# Editor and terminal settings  
+env = EDITOR=nvim
+term = xterm-ghostty
+
+# --[ sessions ] ------------------------------------------------------------
+# Ghostty doesn't have direct session support like Kitty
+# This would need to be handled at the shell level
+
+# --[ os-specific ] ---------------------------------------------------------
+# macOS specific settings - Modified for proper tab behavior
+macos-titlebar-style = hidden 
+macos-option-as-alt = true
+window-decoration = true
+
+# Background and transparency
+background-opacity = 0.95
+
+# --[ includes ] ------------------------------------------------------------
+theme = yoru
+
+# --[ misc ] ----------------------------------------------------------------
+confirm-close-surface = true
+
+# URL handling
+link-url = true
+right-click-action = context-menu
+
+# Clipboard settings
+clipboard-read = ask
+clipboard-write = allow
+clipboard-trim-trailing-spaces = true
+clipboard-paste-protection = true
+
+# Selection settings  
+selection-clear-on-typing = true
+selection-clear-on-copy = false
+
+# Window behavior
+window-inherit-working-directory = true
+window-inherit-font-size = true
+quit-after-last-window-closed = true
+
+# Performance
+window-vsync = true
+
+# Scrollback and history
+image-storage-limit = 335544320
+
+# --[ Tab Configuration ] --------------------------------------------------
+# Tab bar settings based on Kitty configuration
+window-show-tab-bar = always
+# Note: Ghostty doesn't support custom tab templates like Kitty's tab_bar.py
+# The auto setting shows tabs when there are 2+ tabs, similar to modern terminals
+
+# Ensure new tabs open in current window instead of new windows
+# macos-dock-drop-behavior = new-tab
+
+# --[ keybinds ] ------------------------------------------------------------
+# Include keybind configuration
+config-file = keybinds

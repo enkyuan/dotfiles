@@ -7,12 +7,39 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "context_servers": {
+    "mcp-server-supabase": {
+      "source": "extension",
+      "enabled": true,
+      "settings": {
+        "supabase_access_token": "YOUR_TOKEN",
+        "read_only": false
+      }
+    }
+  },
+  "edit_predictions": {
+    "mode": "subtle",
+    "copilot": {
+      "proxy": null,
+      "proxy_no_verify": null,
+      "enterprise_uri": null
+    },
+    "enabled_in_text_threads": false
+  },
+  "features": {
+    "edit_prediction_provider": "copilot"
+  },
+  "icon_theme": "Min Icons",
+  "telemetry": {
+    "metrics": false,
+    "diagnostics": false
+  },
   "vim_mode": true,
   "ui_font_size": 16,
   "buffer_font_size": 16,
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Yoru Dark"
+    "dark": "Min Dark (Blurred)"
   }
 }

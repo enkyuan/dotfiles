@@ -12,3 +12,4 @@
 	remote = origin
 	merge = refs/heads/v2.0
 	vscode-merge-base = origin/v2.0
+	vscode-merge-base = origin/v2.0

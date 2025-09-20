@@ -1,0 +1,24 @@
+# Minimal theme for Ghostty
+# Converted from Kitty theme
+
+# Basic colors
+background = #191B20
+foreground = #DFE0EA
+
+# Standard 16 colors (0-15)
+palette = 0=#272932
+palette = 1=#D95555
+palette = 2=#94DD8E
+palette = 3=#E9D26C
+palette = 4=#7EB7E6
+palette = 5=#D895C7
+palette = 6=#89BEB7
+palette = 7=#CFD0D7
+palette = 8=#16181D
+palette = 9=#E85A84
+palette = 10=#94DD8E
+palette = 11=#E9D26C
+palette = 12=#7EB7E6
+palette = 13=#D895C7
+palette = 14=#89BEB7
+palette = 15=#DFE0EA

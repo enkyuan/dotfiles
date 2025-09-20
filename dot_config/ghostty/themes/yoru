@@ -1,0 +1,38 @@
+# Yoru theme for Ghostty
+# Converted from Kitty theme
+
+# Basic colors
+background = #0c0e0f
+foreground = #edeff0
+
+# Selection colors
+selection-background = #1f2122
+selection-foreground = #edeff0
+
+# Cursor colors
+cursor-color = #edeff0
+
+# URL color
+# Note: Ghostty doesn't have a direct url_color equivalent
+# URLs will use the default link styling
+
+# Standard 16 colors (0-15)
+palette = 0=#0c0e0f
+palette = 1=#DF5B61
+palette = 2=#78B892
+palette = 3=#ecd28b
+palette = 4=#6791C9
+palette = 5=#c58cec
+palette = 6=#6791C9
+palette = 7=#e4e6e7
+palette = 8=#1f2122
+palette = 9=#f26e74
+palette = 10=#82c29c
+palette = 11=#e79881
+palette = 12=#709ad2
+palette = 13=#e8646a
+palette = 14=#82c29c
+palette = 15=#f2f4f5
+
+# Window border colors (Ghostty uses split-divider-color)
+split-divider-color = #6791C9

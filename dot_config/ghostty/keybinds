@@ -1,0 +1,62 @@
+# --[ keybinds ] ------------------------------------------------------------
+# Ghostty keybindings converted from Kitty maps.conf
+
+# Basic clipboard operations
+keybind = cmd+c=copy_to_clipboard
+keybind = cmd+v=paste_from_clipboard
+
+# Font size adjustment
+keybind = cmd+equal=increase_font_size:1
+keybind = cmd+plus=increase_font_size:1
+keybind = cmd+minus=decrease_font_size:1
+keybind = cmd+0=reset_font_size
+
+# Configuration and debugging  
+keybind = cmd+ctrl+comma=reload_config
+
+# Text navigation - jump words with opt+arrow
+keybind = alt+left=text:\x1b\x62
+keybind = alt+right=text:\x1b\x66
+
+# Search functionality
+keybind = cmd+slash=toggle_quick_terminal
+
+# Window management - splits
+keybind = cmd+d=new_split:right
+keybind = cmd+shift+d=new_split:down
+
+# Tab management  
+keybind = cmd+t=new_tab
+keybind = cmd+n=new_window
+keybind = cmd+w=close_surface
+keybind = cmd+right=next_tab
+keybind = cmd+left=previous_tab
+
+# Tab navigation by number
+keybind = cmd+1=goto_tab:1
+keybind = cmd+2=goto_tab:2
+keybind = cmd+3=goto_tab:3
+keybind = cmd+4=goto_tab:4
+keybind = cmd+5=goto_tab:5
+keybind = cmd+6=goto_tab:6
+keybind = cmd+7=goto_tab:7
+keybind = cmd+8=goto_tab:8
+keybind = cmd+9=goto_tab:9
+
+# Window/fullscreen toggle
+keybind = cmd+enter=toggle_fullscreen
+
+# Quit application
+keybind = cmd+shift+w=quit
+
+# Split navigation (similar to Kitty's vim-like navigation)
+keybind = ctrl+h=goto_split:left
+keybind = ctrl+j=goto_split:down
+keybind = ctrl+k=goto_split:up
+keybind = ctrl+l=goto_split:right
+
+# New window with current working directory
+keybind = cmd+shift+n=new_window
+
+# Disable some default bindings that conflict
+keybind = ctrl+w=ignore
