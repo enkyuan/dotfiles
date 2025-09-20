@@ -17,6 +17,9 @@ local normal = {
 	"SignColumn",
 	"CursorLine",
 	"MsgArea",
+	"TabLine",
+	"TabLineFill",
+	"TabLineSel",
 }
 
 M.WinSeparator = {
@@ -44,6 +47,13 @@ local ui = {
 	"TeBufOffModified",
 	"TeBufEmpty",
 	"TeBufTree",
+	"TeBufRun",
+	"TeBufSplit",
+	"TeBufTrans",
+	"TeBufTheme",
+	"TeBufFolderOnActive",
+	"TeBufFolderOnInactive",
+	"TeBufOnModified",
 }
 
 for _, ui_hl in ipairs(ui) do
@@ -51,6 +61,12 @@ for _, ui_hl in ipairs(ui) do
 		bg = "NONE",
 	}
 end
+
+-- Special case: Keep quit button red but make it transparent-friendly
+M.TeBufQuit = {
+	fg = colors.red,
+	bg = "NONE",
+}
 
 --- Telescope ---
 local telescope = {

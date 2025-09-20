@@ -127,7 +127,7 @@ M.getTabline = function()
 
 	local split = "%@Split@" .. "  "
 	local trans = "%@ToggleTrans@" .. " 󱡓 "
-	local theme = "%@ToggleTheme@" .. "   "
+	local theme = "%@ToggleTheme@" .. "  "
 	local quit = "%@Quit@" .. " 󰅙 "
 	local counter = 0
 	for _, buf in pairs(vim.api.nvim_list_bufs()) do
