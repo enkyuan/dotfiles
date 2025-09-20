@@ -2,39 +2,6 @@
 
 This is the comprehensive documentation for my entire `~/.config` dotfiles ecosystem, covering all applications, tools, and their integrations.
 
-## System Architecture
-
-```
-~/.config/
-├── 🚀 Core Development Tools
-│   ├── nvim/                   # TeVim (Neovim) - Primary editor
-│   ├── ghostty/               # Terminal emulator (current)
-│   └── kitty/                 # Terminal emulator (legacy/backup)
-├── 🎨 Theming & Aesthetics  
-│   ├── spicetify/             # Spotify customization
-│   ├── btop/                  # System monitor theming
-│   └── zathura/               # PDF reader configuration
-├── 🔧 System Tools
-│   ├── git/                   # Git configuration
-│   ├── ranger/                # File manager
-│   ├── nnn/                   # Alternative file manager
-│   └── psysh/                 # PHP REPL
-├── 🌐 Development Infrastructure
-│   ├── code/                  # VS Code customizations
-│   ├── herd-lite/             # PHP development environment
-│   ├── uv/                    # Python package manager
-│   └── xata/                  # Database credentials
-├── ⚙️  Package Managers & Tools
-│   ├── pip/                   # Python package manager
-│   ├── configstore/           # Application configurations
-│   └── simple-update-notifier/ # Update management
-├── 🔐 Security & Credentials
-│   ├── github-copilot/        # AI coding assistant
-│   └── chezmoi/               # Dotfiles management
-└── 🎮 Alternative Interfaces
-    └── zed/                   # Alternative editor
-```
-
 **Key Customizations**:
 - Personal configuration layer in `lua/custom/`
 - Custom keymaps and options overrides
